@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "gatekeeper" {
+resource "kubernetes_namespace_v1" "gatekeeper" {
   metadata {
     name = "gatekeeper-system"
 
