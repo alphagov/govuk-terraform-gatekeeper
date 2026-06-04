@@ -19,7 +19,7 @@ resource "null_resource" "kube_system_ns_label" {
 
 resource "helm_release" "gatekeeper" {
   name       = "gatekeeper"
-  namespace  = kubernetes_namespace.gatekeeper.id
+  namespace  = kubernetes_namespace_v1.gatekeeper.id
   repository = "https://open-policy-agent.github.io/gatekeeper/charts"
   chart      = "gatekeeper"
   version    = "3.19.1"
