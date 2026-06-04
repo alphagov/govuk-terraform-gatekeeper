@@ -55,7 +55,7 @@ spec:
           missing := required - provided
           count(missing) > 0
           # msg := get_message(input.parameters, def_msg)
-          msg := sprintf("you must provide labels: %v %v %v", [missing, input.request.userInfo.username, input.request.userInfo.groups])
+          msg := sprintf("you must provide labels: %v %v %v", [missing, input.review.userInfo.username, input.review.userInfo.groups])
         }
 
         violation[{"msg": msg}] {
