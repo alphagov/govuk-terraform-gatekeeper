@@ -11,11 +11,11 @@ resource "kubernetes_namespace_v1" "gatekeeper" {
 }
 
 # By adding this label gatekeeper will ignore kube-system for all policy decisions.
-resource "null_resource" "kube_system_ns_label" {
-  provisioner "local-exec" {
-    command = "kubectl label --overwrite ns kube-system 'admission.gatekeeper.sh/ignore=true'"
-  }
-}
+# resource "null_resource" "kube_system_ns_label" {
+#   provisioner "local-exec" {
+#     command = "kubectl label --overwrite ns kube-system 'admission.gatekeeper.sh/ignore=true'"
+#   }
+# }
 
 resource "helm_release" "gatekeeper" {
   name       = "gatekeeper"
