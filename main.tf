@@ -3,20 +3,9 @@ resource "kubernetes_namespace" "gatekeeper" {
     name = "gatekeeper-system"
 
     labels = {
-      "name"                                           = "gatekeeper-system"
-      "cloud-platform.justice.gov.uk/is-production"    = var.is_production
-      "cloud-platform.justice.gov.uk/environment-name" = var.environment_name
-      "admission.gatekeeper.sh/ignore"                 = "no-self-managing"
-      "pod-security.kubernetes.io/enforce"             = "privileged"
-    }
-
-    annotations = {
-      "cloud-platform.justice.gov.uk/application"   = "Gatekeeper"
-      "cloud-platform.justice.gov.uk/business-unit" = "Platforms"
-      "cloud-platform.justice.gov.uk/owner"         = "Cloud Platform: platforms@digital.justice.gov.uk"
-      "cloud-platform.justice.gov.uk/source-code"   = "https://github.com/ministryofjustice/cloud-platform-infrastructure"
-      "cloud-platform.justice.gov.uk/slack-channel" = "cloud-platform"
-      "cloud-platform-out-of-hours-alert"           = var.out_of_hours_alert
+      "name"                               = "gatekeeper-system"
+      "admission.gatekeeper.sh/ignore"     = "no-self-managing"
+      "pod-security.kubernetes.io/enforce" = "privileged"
     }
   }
 }

@@ -1,6 +1,4 @@
-# cloud-platform-terraform-gatekeeper
-
-Kubernetes native security policy enforcement, an upgrade of https://github.com/ministryofjustice/cloud-platform-terraform-opa
+# govuk-terraform-gatekeeper
 
 Kubernetes allows decoupling policy decisions from the API server by means of admission controller webhooks to intercept admission requests before they are persisted as objects in Kubernetes. Gatekeeper is a customizable admission webhook for Kubernetes that enforces policies executed by the Open Policy Agent (OPA), a policy engine for Cloud Native environments hosted by CNCF.
 
