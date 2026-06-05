@@ -7,29 +7,18 @@ spec:
     kinds:
       - apiGroups: [""]
         kinds: ["Namespace"]
-    excludedNamespaces: [
-      "calico-apiserver",
-      "calico-system",
-      "cert-manager",
-      "concourse",
-      "gatekeeper-system",
-      "ingress-controllers",
-      "kube-system",
-      "kube-node-lease",
-      "kube-public",
-      "default",
-      "kuberos",
-      "logging",
-      "monitoring",
-      "smoketest-psp-*",
-      "smoketest-psa-*",
-      "tigera-operator",
-      "trivy-system",
-      "velero",
-      "amazon-guardduty"
+    excludedNamespaces:
+      [
+        "gatekeeper-system",
+        "kube-system",
+        "kube-node-lease",
+        "kube-public",
+        "default",
+        "logging",
+        "monitoring",
       ]
   parameters:
     message: "All user namespaces must have a `pod-security.kubernetes.io/enforce: restricted` label."
     labels:
-    - key: pod-security.kubernetes.io/enforce
-      allowedRegex: restricted
+      - key: pod-security.kubernetes.io/enforce
+        allowedRegex: restricted
