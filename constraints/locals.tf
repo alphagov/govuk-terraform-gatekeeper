@@ -19,6 +19,7 @@ locals {
   block_ingresses                         = yamldecode(file("${path.module}/../resources/constraints/block_ingresses.yaml"))
   ingress_valid_classname_yaml            = yamldecode(file("${path.module}/../resources/constraints/ingress_valid_classname.yaml"))
   ingress_internal_class_domain_yaml      = yamldecode(file("${path.module}/../resources/constraints/ingress_internal_class_domain.yaml"))
+  immuatable_configmap_yaml               = yamldecode(file("${path.module}/../resources/constrains/immutable_configmap.yaml"))
 
   # For each constraint, a value needs to be in the constraint map. This bloc allows us to set values on constraints which enables us to toggle the configuration of the constraints. -- we merge in the spec separately to avoid overwriting entire spec key
   constraint_map = {
@@ -42,5 +43,6 @@ locals {
     block_ingresses                    = merge(local.block_ingresses, { "spec" : merge(local.block_ingresses["spec"], { "enforcementAction" : var.dryrun_map.block_ingresses ? "dryrun" : "deny" }) })
     ingress_valid_classname            = merge(local.ingress_valid_classname_yaml, { "spec" : merge(local.ingress_valid_classname_yaml["spec"], { "enforcementAction" : var.dryrun_map.ingress_valid_classname ? "dryrun" : "deny" }) })
     ingress_internal_class_domain      = merge(local.ingress_internal_class_domain_yaml, { "spec" : merge(local.ingress_internal_class_domain_yaml["spec"], { "enforcementAction" : var.dryrun_map.ingress_internal_class_domain ? "dryrun" : "deny", "parameters" : { "validInternalDomains" : ["*.internal.cloud-platform.service.justice.gov.uk"], "validInternalNonProdDomains" : ["*.internal-non-prod.cloud-platform.service.justice.gov.uk"] } }) })
+    immutable_configmap                = merge(local.immutable_configmap_yaml, { "spec" : merge(local.immutable_configmap_yaml, { "enforcementAction" : var.dryrun_map.immutable_configmap ? "dryrun" : "deny" }) })
   }
 }

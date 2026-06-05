@@ -13,8 +13,6 @@ A downside of this approach, is that you have to pass variables twice (small amo
 2. Create a constraint file under the `resources/constraints` folder
 3. Update the `constraint_map` in the local block in the `constraints/locals.tf` file
 4. Update the `dryrun_map` variable in the `variables.tf` and `constraints/variables.tf` files
-5. Update the `dryrun_map` variable in the `test/unit-test/main.tf` file
-6. Update the `dryrun_map` variable in the `example/main.tf` file 
 
 ### Configuring constraints
 
