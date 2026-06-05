@@ -19,7 +19,7 @@ locals {
   block_ingresses                         = yamldecode(file("${path.module}/../resources/constraints/block_ingresses.yaml"))
   ingress_valid_classname_yaml            = yamldecode(file("${path.module}/../resources/constraints/ingress_valid_classname.yaml"))
   ingress_internal_class_domain_yaml      = yamldecode(file("${path.module}/../resources/constraints/ingress_internal_class_domain.yaml"))
-  immutable_configmap_yaml                = yamldecode(file("${path.module}/../resources/constrains/immutable_configmap.yaml"))
+  immutable_configmap_yaml                = yamldecode(file("${path.module}/../resources/constraints/immutable_configmap.yaml"))
 
   # For each constraint, a value needs to be in the constraint map. This bloc allows us to set values on constraints which enables us to toggle the configuration of the constraints. -- we merge in the spec separately to avoid overwriting entire spec key
   constraint_map = {
