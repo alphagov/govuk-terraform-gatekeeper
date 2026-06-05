@@ -1,0 +1,16 @@
+apiVersion: mutations.gatekeeper.sh/v1beta1
+kind: AssignMetadata
+metadata:
+  name: add-username-label
+spec:
+  applyTo:
+    - groups: [""]
+      versions: ["v1"]
+      kinds: ["ConfigMap"]
+  match:
+    scope: Namespaced
+  location: "metadata.labels.creator"
+  parameters:
+    assign:
+      externalData:
+        dataSource: Username
